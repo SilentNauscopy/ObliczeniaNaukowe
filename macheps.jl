@@ -82,13 +82,55 @@ function findmaximum()
     while true
         if !isinf(a*2)
             a = a * 2
-            println(bits(a))
         else
             break
         end
     end
     println(a," ",bits(a))
     println(realmax(Float64)," ",bits(realmax(Float64)))
+
+    a = Float32(1)
+    b = Float32(1)
+    while true
+        b = b/2
+        if a + b < 2
+            a += b
+        else
+            break
+        end
+    end
+
+    while true
+        if !isinf(a*2)
+            a = a * 2
+        else
+            break
+        end
+    end
+    println(a," ",bits(a))
+    println(realmax(Float32)," ",bits(realmax(Float32)))
+
+    a = Float16(1)
+    b = Float16(1)
+    while true
+        b = b/2
+        if a + b < 2
+            a += b
+        else
+            break
+        end
+    end
+
+    while true
+        if !isinf(a*2)
+            a = a * 2
+        else
+            break
+        end
+    end
+    println(a," ",bits(a))
+    println(realmax(Float16)," ",bits(realmax(Float16)))
+
 end
 
 
