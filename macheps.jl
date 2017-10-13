@@ -88,6 +88,7 @@ function findmaximum()
         end
     end
     println(a," ",bits(a))
+    println(realmax(Float64)," ",bits(realmax(Float64)))
 end
 
 
