@@ -78,7 +78,7 @@ function findmaximum()
             break
         end
     end
-
+    bits(a)
     while true
         if !isinf(a*2)
             a = a * 2
@@ -90,6 +90,7 @@ function findmaximum()
     println(realmax(Float64)," ",bits(realmax(Float64)))
 
     a = Float32(1)
+    println(bits(a))
     b = Float32(1)
     while true
         b = b/2
@@ -99,7 +100,7 @@ function findmaximum()
             break
         end
     end
-
+    println(bits(a))
     while true
         if !isinf(a*2)
             a = a * 2
@@ -134,6 +135,6 @@ function findmaximum()
 end
 
 
-macheps()
-jjjj()
+#macheps()
+#jjjj()
 findmaximum()
