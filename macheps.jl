@@ -79,7 +79,7 @@ function etaNum()
             break
         end
     end
-    println("$(typeof(c)): eta [$c, $(bits(c))")
+    println("$(typeof(c)): eta [$c, $(bits(c))]")
 end
 
 # funckaj wyznaczająca iteracyjnie maksymalną wartość w danym typie
@@ -161,4 +161,4 @@ end
 
 #macheps()
 #etaNum()
-#findmaximum()
+findmaximum()
