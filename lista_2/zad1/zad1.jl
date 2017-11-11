@@ -3,12 +3,13 @@
   @author: Bartosz Banasik
 =#
 
-# Dane wektory z treści zadania
+# Dane wektory z treści zadania już zmienione
 x = Float32[2.718281828, -3.141592654, 1.414213562, 0.577215664, 0.301029995]
 y = Float32[1486.2497, 878366.9879, -22.37492, 4773714.647, 0.000185049]
 
 a = Float64[2.718281828, -3.141592654, 1.414213562, 0.577215664, 0.301029995]
 b = Float64[1486.2497, 878366.9879, -22.37492, 4773714.647, 0.000185049]
+
 # funkcja sumująca po kolei
 function wprzod(x,y)
     S = 0
