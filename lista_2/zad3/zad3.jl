@@ -44,7 +44,7 @@ function hilb(n::Int)
         return A
 end
 
-# Pierwsza pętla liczy rpzwiązania ukłądu równań dla macierzy współczynników
+# Pierwsza pętla liczy rozwiązania układu równań dla macierzy współczynników
 # wygenerowanej za pomocą funkcji hilb()
 
 for i in range(1,20)

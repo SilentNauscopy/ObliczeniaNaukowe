@@ -18,9 +18,11 @@ p =   [1, -210.0, 20615.0,-1256850.0,
       2432902008176640000.0]
 
 WilkinsonPoly = Poly(reverse(p))
+
+#Obliczenie miejsc zerowych
 WilkinsonZeros = roots(WilkinsonPoly)
 sort(WilkinsonZeros)
-#println(WilkinsonZeros)
+
 println("-------------------------------------------")
 println("roots for natural:")
 j = 20
@@ -38,6 +40,8 @@ end
 
 println("--------------------------------------------")
 println("Values of roots for products")
+
+# Stworzenie wielomianu w postaci iloczynowej
 WilkinsonProducts = poly(1:20)
 for i in WilkinsonZeros
   println("root = $i \t$(abs(WilkinsonProducts(i)))")

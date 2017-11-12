@@ -3,39 +3,34 @@
   @author: Bartosz Banasik
 =#
 
-x = Array{Float64}(41)
 
-function run()
+# Funkcja zwracająca tablice wyników dla podanych parametrów
+function run(x0, c)
+  x = Array{Float64}(41)
+  x[1] = x0
   for i in 2:41
     x[i] = x[i-1]^2 + c
   end
   println("------------------------------------")
-  println(x)
+  return x
 end
 
+wynik1 = run(1, -2)
 
-x[1] = 1
-c = Float64(-2)
-run()
+wynik2 = run(2, -2)
 
+wynik3 = run(1.99999999999999, -2)
 
-c = -2
-x[1] = 2
-run()
+wynik4 = run(1, -1)
 
-c = -2
-x[1] = 1.99999999999999
-run()
+wynik5 = run(-1, -1)
 
-c = -1
-x[1] = 1
-run()
+wynik6 = run(0.75, -1)
 
-x[1] = -1
-run()
+wynik7 = run(0.25, -1)
 
-x[1] = 0.75
-run()
+# Wyświetlanie wyników
 
-x[1] = 0.25
-run()
+for i in 1:41
+  println("$(i-1): $(wynik1[i]), $(wynik2[i]), $(wynik3[i]), $(wynik4[i]), $(wynik5[i]), $(wynik6[i]), $(wynik7[i])")
+end
