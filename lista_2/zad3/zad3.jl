@@ -23,6 +23,7 @@ function matcond(n::Int, c::Float64)
         (U,S,V)=svd(rand(n,n))
         return U*diagm(linspace(1.0,c,n))*V'
 end
+
 function hilb(n::Int)
 # Function generates the Hilbert matrix  A of size n,
 #  A (i, j) = 1 / (i + j - 1)
@@ -43,37 +44,56 @@ function hilb(n::Int)
         return A
 end
 
-function genB(A::Array{Float64})
+# Pierwsza pętla liczy rpzwiązania ukłądu równań dla macierzy współczynników
+# wygenerowanej za pomocą funkcji hilb()
 
-        x = ones(Float64, size(A)[1], 1)
-        B = A*x
-        return B
-end
-
-n = 5
 for i in range(1,20)
         println("-------------------------------------------")
+
+        # Macierz prawidłowego wyniku, ktora służy to obliczenia macierzy
+        # prawyh stron
+        one = ones(Float64, i)
+
         A = hilb(i)
 
-        B = genB(A)
+        # Obliczanie macierzy prawych stron
+        B = A*one
 
+        println("Rozmiar: $i, rank() = $(rank(A)), cond() = $(cond(A))")
+
+        # Pierwsza metoda
         x = A\B
-        println("A\\B: ")
-        println(x)
-        println("inv(a)*b")
+        err1 = abs(norm(x)-norm(one))/norm(one)
+
+        # Druga metoda
         x = inv(A)*B
-        println(x)
+        err2 = abs(norm(x)-norm(one))/norm(one)
+        println("Error\t$err1\t$err2")
+
 end
+
+# Druga pętla licząca rozwiązania układu dla macierzy współczynników
+# wygenerowanych za pomocą funkcji matcond()
 
 for i in [5, 10, 20]
         for c in Float64[1, 10, 10^3, 10^7, 10^12, 10^16]
                 println("----------------------------------------------------")
+
+                one = ones(Float64, i)
                 A = matcond(i,c)
-                B = genB(A)
+                B = A*one
+
+                # Pierwsza metoda
                 x = A\B
-                println("n = ", i, " c = ", c)
-                println("A\\B: ", x )
+
+                println("Rozmiar $i, c = $c, rank() = $(rank(A)), cond() = $(cond(A))")
+                err1 = abs(norm(x)-norm(one))/norm(one)
+
+
+
+                # Druga metoda
                 x = inv(A)*B
-                println("inv(A)*B: ", x )
+                err2 = abs(norm(x)-norm(one))/norm(one)
+                println("Error\t$err1\t$err2")
         end
 end
