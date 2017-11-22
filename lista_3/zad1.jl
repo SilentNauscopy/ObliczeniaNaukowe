@@ -27,5 +27,6 @@ function mbisekcji(f, a::Float64, b::Float64, delta::Float64, epsilon::Float64)
             a = c
             u = w
         end
+        k = k+1
     end
 end
