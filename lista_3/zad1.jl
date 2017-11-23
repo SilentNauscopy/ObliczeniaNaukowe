@@ -8,6 +8,8 @@ function mbisekcji(f, a::Float64, b::Float64, delta::Float64, epsilon::Float64)
     e = b - a
     er = 0
     k = 1
+    c = 0
+    w = 0
     if sign(u) == sign(v)
         er = 1
         return c, w, k, er
