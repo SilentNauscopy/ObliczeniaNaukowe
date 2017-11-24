@@ -21,7 +21,10 @@ println(r," ",v, " ",it, " ", err)
 
 
 
-
+println(mbisekcji(f2, -1.0, 0.0, 10.0^(-5.0), 10.0^(-5.0)))
+println(mstycznych(f2, p2, -1.1, 10.0^(-5.0), 10.0^(-5.0), 1000))
+println(msiecznych(f2, -0.7, -0.02, 10.0^(-5.0), 10.0^(-5.0), 1000))
+#=
 r, v, it, err = mbisekcji(f2, -1.0, 1.0, 10^(-5.0),10^(-5.0))
 println(r," ",v, " ",it, " ", err)
 
@@ -30,3 +33,4 @@ println(r," ",v, " ",it, " ", err)
 
 r, v, it, err = msiecznych(f2, -1.0, 1.0, 10^(-5.0), 10^(-5.0), 100)
 println(r," ",v, " ",it, " ", err)
+=#
