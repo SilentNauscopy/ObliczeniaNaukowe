@@ -5,6 +5,7 @@ include("zad1.jl")
 include("zad2.jl")
 include("zad3.jl")
 
+#Funkcja podana w zadaniu
 f(x) = 3x - exp(x)
 
 # petla sprawdzajaca przedzialy wielkosci 1

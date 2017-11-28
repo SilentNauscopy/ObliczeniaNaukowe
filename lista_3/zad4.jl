@@ -6,8 +6,10 @@ include("zad1.jl")
 include("zad2.jl")
 include("zad3.jl")
 
+#Funkcje podane w zadaniu
 f(x) = sin(x) - ((1/2)*x)^2
 p(x) = cos(x) - x/2
+
 r, v, it, err = mbisekcji(f,1.5,2.0,(1/2)*10^(-5.0),(1/2)*10^(-5.0))
 println(r," ",v, " ",it, " ", err)
 

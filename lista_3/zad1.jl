@@ -1,7 +1,7 @@
 #=
     @author=Bartosz Banasik
 =#
-
+# Dokumentacja w sprawozdaniu
 function mbisekcji(f, a::Float64, b::Float64, delta::Float64, epsilon::Float64)
     u = f(a)
     v = f(b)
