@@ -11,6 +11,7 @@ Plots.default(overwrite_figure=false)
 
 include("ilorazyRoznicowe.jl")
 include("warNewton.jl")
+include("naturalna.jl")
 
 function rysujNnfx(f, a::Float64, b::Float64, n::Int)
 
