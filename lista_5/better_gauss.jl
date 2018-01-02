@@ -1,5 +1,5 @@
 function Gauss(n, l, a)
-  
+
   for row = 1:l:n
 
     for k=row:row+l-3
@@ -49,6 +49,14 @@ function Gauss(n, l, a)
 
 end
 
+function printMatrix(A,n)
+for i = 1:n
+  println(A[i,:])
+end
+
+end
+
+
 println("Podaj nazwe pliku z danymi:")
 file_name = readline(STDIN)
 f = open(file_name)
@@ -71,3 +79,4 @@ close(f)
 println("Wczytano dane")
 println("Szybki")
 @time Gauss(n,k,A)
+printMatrix(A.n)
