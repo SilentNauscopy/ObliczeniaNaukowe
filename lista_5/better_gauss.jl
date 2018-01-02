@@ -51,7 +51,10 @@ end
 
 function printMatrix(A,n)
 for i = 1:n
-  println(A[i,:])
+  for j = 1:n
+    print(A[i,j]," ")
+  end
+println()
 end
 
 end
@@ -79,4 +82,4 @@ close(f)
 println("Wczytano dane")
 println("Szybki")
 @time Gauss(n,k,A)
-printMatrix(A.n)
+printMatrix(A,n)
