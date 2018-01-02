@@ -1,5 +1,5 @@
 function Gauss(n::Int, l, a)
-  last = n+1
+
   for row = 1:l:n
 
     for k=row:row+l-3
@@ -11,12 +11,12 @@ function Gauss(n::Int, l, a)
           for j = k+1:n
             a[i,j] = a[i,j] - z*a[k,j]
           end
-          a[i,n+1] = a[i,n+1] - z*[k,n+1]
+          a[i,n+1] = a[i,n+1] - z*a[k,n+1]
         else
           for j = k+1:k+l
             a[i,j] = a[i,j] - z*a[k,j]
           end
-          a[i,n+1] = a[i,n+1] - z*[k,n+1]
+          a[i,n+1] = a[i,n+1] - z*a[k,n+1]
         end
 
 
@@ -32,7 +32,7 @@ function Gauss(n::Int, l, a)
       for j = k+1:n
         a[i,j] = a[i,j] - z*a[k,j]
       end
-      a[i,n+1] = a[i,n+1] - z*[k,n+1]
+      a[i,n+1] = a[i,n+1] - z*a[k,n+1]
     else
 
       for k = row+l-2:row+l-1
@@ -42,7 +42,7 @@ function Gauss(n::Int, l, a)
           for j = k+1:k+l
             a[i,j] = a[i,j] - z*a[k,j]
           end
-          a[i,n+1] = a[i,n+1] - z*[k,n+1]
+          a[i,n+1] = a[i,n+1] - z*a[k,n+1]
         end
       end
 
@@ -50,6 +50,25 @@ function Gauss(n::Int, l, a)
 
   end
 
+  X = Array{Float64}(n)
+  for i = n:-1:1
+    X[i] = A[i,n+1]
+    if i+l > n
+
+      for j = i+1:n
+        X[i] = X[i] - A[i,j]*X[j]
+      end
+    else
+      for j = i+1:i+l
+        X[i] = X[i] - A[i,j]*X[j]
+      end
+
+    end
+
+    X[i] = X[i]/A[i,i]
+  end
+
+  println(X)
 end
 
 function printMatrix(A,n)
@@ -95,7 +114,8 @@ for line in eachline(f)
 end
 
 close(f)
+close(f2)
 println("Wczytano dane")
 println("Szybki")
 @time Gauss(n,k,A)
-printMatrix(A,n2)
+#printMatrix(A,n2)
