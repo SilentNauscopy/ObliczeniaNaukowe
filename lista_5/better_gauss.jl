@@ -1,12 +1,22 @@
+#=
+  @author=Bartosz Banasik
+=#
 function Gauss(n::Int, l, a)
 
+  #Zaczynamy dla każdego kwadratu po przekątnej
   for row = 1:l:n
 
+    #Dla głównych kwadratów bez dwóch ostatnich wierszy
     for k=row:row+l-3
+
+      #Będziemy zerować tylko do końca kwadratu nie dalej
       for i = k+1:row + l -1
         z = a[i,k]/a[k,k]
         a[i,k] = 0
 
+        #sprawdzamy ile miejsca zostało nam po prawej do obliczenia wiersza
+        #jęsli mniej niż l to tylko do końca tablicy w przeciwnym razie sprawdzamy do końca
+        #kwadratu
         if k+l > n
           for j = k+1:n
             a[i,j] = a[i,j] - z*a[k,j]
@@ -18,23 +28,21 @@ function Gauss(n::Int, l, a)
           end
           a[i,n+1] = a[i,n+1] - z*a[k,n+1]
         end
-
-
       end
     end
 
+    #dla dwoch ostatnich wierszy z kwadratu
+    #sprawdzamy czy są ta faktycznie ostatnie wiersze
     if row+l > n
       k = row+l-2
       i = k+1
       z = a[i,k]/a[k,k]
       a[i,k] = 0
-
       for j = k+1:n
         a[i,j] = a[i,j] - z*a[k,j]
       end
       a[i,n+1] = a[i,n+1] - z*a[k,n+1]
     else
-
       for k = row+l-2:row+l-1
         for i = k+1:row+2*l-1
           z = a[i,k]/a[k,k]
@@ -45,30 +53,32 @@ function Gauss(n::Int, l, a)
           a[i,n+1] = a[i,n+1] - z*a[k,n+1]
         end
       end
-
     end
-
   end
 
+  #Obliczanie wyniku
   X = Array{Float64}(n)
   for i = n:-1:1
-    X[i] = A[i,n+1]
+    X[i] = a[i,n+1]
     if i+l > n
-
       for j = i+1:n
-        X[i] = X[i] - A[i,j]*X[j]
+        X[i] = X[i] - a[i,j]*X[j]
       end
     else
       for j = i+1:i+l
-        X[i] = X[i] - A[i,j]*X[j]
+        X[i] = X[i] - a[i,j]*X[j]
       end
-
     end
-
-    X[i] = X[i]/A[i,i]
+    X[i] = X[i]/a[i,i]
   end
-
-  println(X)
+  #=
+  f = open("wynik.txt","w")
+  for i in X
+    write(f, "$i\n")
+  end
+  close(f)
+  =#
+  return X
 end
 
 function printMatrix(A,n)
@@ -80,7 +90,7 @@ println()
 end
 
 end
-
+#=
 println("Podaj nazwe pliku z danymi prawych stron")
 file_name2 = readline(STDIN)
 f2 = open(file_name2)
@@ -119,3 +129,4 @@ println("Wczytano dane")
 println("Szybki")
 @time Gauss(n,k,A)
 #printMatrix(A,n2)
+=#

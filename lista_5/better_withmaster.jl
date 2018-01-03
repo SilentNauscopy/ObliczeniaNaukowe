@@ -126,23 +126,23 @@ function GaussWithMaster(n::Int, l, a)
 
   X = Array{Float64}(n)
   for i = n:-1:1
-    X[i] = A[i,n+1]
+    X[i] = a[i,n+1]
     if i+2*l+1 > n
 
       for j = i+1:n
-        X[i] = X[i] - A[i,j]*X[j]
+        X[i] = X[i] - a[i,j]*X[j]
       end
     else
       for j = i+1:i+2*l+1
-        X[i] = X[i] - A[i,j]*X[j]
+        X[i] = X[i] - a[i,j]*X[j]
       end
 
     end
 
-    X[i] = X[i]/A[i,i]
+    X[i] = X[i]/a[i,i]
   end
 
-  println(X)
+  return X
 end
 
 function swaprows(A, row1, row2, first_element, n, l)
@@ -176,7 +176,7 @@ function printMatrix(A,n)
   println()
   end
 end
-
+#=
 println("Podaj nazwe pliku z danymi prawych stron")
 file_name2 = readline(STDIN)
 f2 = open(file_name2)
@@ -213,10 +213,11 @@ close(f)
 close(f2)
 
 #printMatrix(A,n)
-#=
+
 swaprows(A,4,5,1,n,k)
 println("###########################################################")
 printMatrix(A,n)
-=#
+
 @time Gauss(n,k,A)
 #printMatrix(A,n)
+=#
