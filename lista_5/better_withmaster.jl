@@ -44,7 +44,7 @@ function findAbsMaxLast2(k,A)
   end
 end
 
-function Gauss(n::Int, l, a)
+function GaussWithMaster(n::Int, l, a)
 
   for row = 1:l:n
     #sprawdzmy na l%k dla wszystkihc oprócz 2 ostatnich
