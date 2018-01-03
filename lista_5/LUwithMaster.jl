@@ -1,3 +1,50 @@
+function findAbsMax1(k,l,A)
+  #println(k, " ", l-(k%l-1))
+  depth = l-(k%l)
+  max = 0
+  index = -1
+  for i = k:k+depth
+    if abs(A[i,k]) > max
+      max = A[i,k]
+      index = i
+    end
+  end
+  #println("Maxvalue $max index [$k,$index]")
+  if index != -1
+    return index
+  else
+    return k
+  end
+end
+
+function findAbsMax2(k,l,A, finish)
+  depth = finish
+
+  max = 0
+  index = -1
+  for i = k:depth
+    #println(i)
+    if abs(A[i,k]) > max
+      max = A[i,k]
+      index = i
+    end
+  end
+  if index != -1
+    return index
+  else
+    return k
+  end
+end
+
+function findAbsMaxLast2(k,A)
+  if A[k,k] < A[k+1,k]
+    return k+1
+  else
+    return k
+  end
+end
+
+
 function LUwithMaster(n::Int, l, a)
 
   for row = 1:l:n
