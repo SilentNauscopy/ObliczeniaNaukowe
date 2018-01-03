@@ -23,7 +23,7 @@ function findAbsMax2(k,l,A, finish)
   max = 0
   index = -1
   for i = k:depth
-    println(i)
+    #println(i)
     if abs(A[i,k]) > max
       max = A[i,k]
       index = i
@@ -212,11 +212,11 @@ end
 close(f)
 close(f2)
 
-printMatrix(A,n)
+#printMatrix(A,n)
 #=
 swaprows(A,4,5,1,n,k)
 println("###########################################################")
 printMatrix(A,n)
 =#
-Gauss(n,k,A)
+@time Gauss(n,k,A)
 #printMatrix(A,n)

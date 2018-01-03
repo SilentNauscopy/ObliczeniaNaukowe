@@ -15,14 +15,14 @@ function gauss(n, a)
       end
     end
   end
-  #=
+
   for i = 1:n
     println(a[i,:])
   end
 
   for i = 1:n
     println(b[i,:])
-  end=#
+  end
 end
 
 function Gauss(n, l, a)
@@ -102,6 +102,6 @@ end
 close(f)
 println("Wczytano dane")
 println("Normalny")
-#@time gauss(n, A)
+@time gauss(n, A)
 println("Szybki")
-@time Gauss(n,k,B)
+#@time gauss(n,k,B)
