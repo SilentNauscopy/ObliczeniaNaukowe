@@ -30,4 +30,5 @@ function generate(size, l, c::Float64)
   end
 
   close(f2)
+  close(f)
 end
